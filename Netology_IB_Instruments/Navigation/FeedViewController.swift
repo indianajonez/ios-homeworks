@@ -9,26 +9,21 @@ import UIKit
 import Foundation
 
 
-struct Post {
-    let id = UUID()
-    let title: String?
-    let image: UIImage?
-    let text: String?
-}
+
 
 
 
 class FeedViewController: UIViewController {
 
     let post = Post(
-        title: "Название поста (POST VC)",
+        title: "Название поста",
         image: UIImage(named: "A316DE42"),
         text: "текст внутри данного поста, очень длинный и важный"
     )
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .systemCyan
         makeButtonViewPost()
     }
     
