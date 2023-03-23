@@ -41,6 +41,7 @@ class ProfileHeaderView: UIView {
         textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         textField.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
         textField.leftViewMode = .always
+        textField.placeholder = "Write your status..."
         return textField
     }()
 

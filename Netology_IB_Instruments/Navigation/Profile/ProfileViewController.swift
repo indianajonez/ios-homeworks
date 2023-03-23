@@ -15,13 +15,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         self.title = "Profile"
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
         view.addSubview(profileHeaderView)
         profileHeaderView.frame = view.safeAreaLayoutGuide.layoutFrame
         layout()
+        
     }
     
     private func layout() {
