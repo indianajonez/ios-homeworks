@@ -13,7 +13,6 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         makeBarItem()
-        // Do any additional setup after loading the view.
     }
     
     private func makeBarItem() {
@@ -24,7 +23,6 @@ class PostViewController: UIViewController {
         let infoVC = InfoViewController()
         infoVC.title = "Информация о посте"
         present(infoVC, animated: true)
-//        navigationController?.pushViewController(infoVC, animated: true)
     }
 
 

@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
         setupControllers() /// наша добавка из-за которой мы делаем override
         super.viewDidLoad()
         
-        UINavigationBar.appearance().backgroundColor = .systemGray6
+        UINavigationBar.appearance().backgroundColor = .systemGray6 // как сделать так, чтобы фон оставался как у основной части экрана?
         ///UIBarButtonItem.appearance().tintColor = UIColor.red
         UITabBar.appearance().backgroundColor = .systemGray6
     }
@@ -24,7 +24,7 @@ class TabBarController: UITabBarController {
         firstVC.tabBarItem.title = "Feed"
         firstVC.navigationItem.title = "Feed"
         secondVC.tabBarItem.title = "Profile"
-        firstVC.tabBarItem.image = UIImage(systemName: "rectangle.grid.2x2")
+        firstVC.tabBarItem.image = UIImage(systemName: "rectangle.3.group.bubble.left")
         secondVC.tabBarItem.image = UIImage(systemName: "person.crop.circle") //создаем таб бар контролле
         let firstNavigationVC = UINavigationController(rootViewController: firstVC)
         let secondNavigationVC = UINavigationController(rootViewController: secondVC) // создаем навигейшн контроллеры
