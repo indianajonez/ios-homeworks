@@ -13,7 +13,6 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .yellow //назначаем цвет фона в модальном открытии кнопки меню Инфо
         makeButton()
-        // Do any additional setup after loading the view.
     }
     
     func makeButton() { //черная кнопка по центру модального экрана
@@ -25,8 +24,8 @@ class InfoViewController: UIViewController {
         view.addSubview(button)
     }
     
-    @objc private func tapAction(){ // алерт окно с системной информацией
-        let alert = UIAlertController(title: "Перейти назад", message: "что ты хочешь сделать?", preferredStyle: .alert) //алерт сообщение
+    @objc private func tapAction(){
+        let alert = UIAlertController(title: "Перейти назад", message: "что ты хочешь сделать?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Выйти", style: .default) { _ in
             print("Выход из окна информация")
             self.navigationController?.popViewController(animated: true)

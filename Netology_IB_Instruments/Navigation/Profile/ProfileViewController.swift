@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         profileHeaderView.frame = view.safeAreaLayoutGuide.layoutFrame
         layout()
     }
-    // this is for check git
+    
     private func layout() {
         NSLayoutConstraint.activate([
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

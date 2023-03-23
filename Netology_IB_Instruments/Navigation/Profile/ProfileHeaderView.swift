@@ -32,7 +32,7 @@ class ProfileHeaderView: UIView {
     let statusTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.borderColor = UIColor.black.cgColor // что это меняет? не нашла
+        textField.layer.borderColor = UIColor.black.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 12
         textField.layer.backgroundColor = UIColor.white.cgColor
@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
-    let setStatusButtom: UIButton = { //сама
+    let setStatusButtom: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show status", for: .normal)
