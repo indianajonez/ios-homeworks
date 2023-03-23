@@ -50,7 +50,7 @@ class ProfileHeaderView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Waiting for something..."
-        label.textColor = .gray
+        label.textColor = .systemGray
         //label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
