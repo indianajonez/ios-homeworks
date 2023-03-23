@@ -15,6 +15,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         self.title = "Profile"
+        self.navigationController?.navigationBar.backgroundColor = .gray
         view.addSubview(profileHeaderView)
         profileHeaderView.frame = view.safeAreaLayoutGuide.layoutFrame
         layout()

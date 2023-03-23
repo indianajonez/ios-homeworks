@@ -44,7 +44,7 @@ class ProfileHeaderView: UIView {
         textField.placeholder = "Write your status..."
         return textField
     }()
-
+    
     
     let statusLabel : UILabel = {
         let label = UILabel()
@@ -75,9 +75,18 @@ class ProfileHeaderView: UIView {
         print(statusLabel.text ?? "NOT")
     }
     
+    private lazy var simpleButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Simple button", for: .normal)
+        button.layer.backgroundColor = UIColor.blue.cgColor
+        button.layer.cornerRadius = 4
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom].forEach{addSubview($0)} // добавили аватарку на вью
+        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom, simpleButton].forEach{addSubview($0)} // добавили аватарку на вью
         layout() // закрепили аватарку на вью
     }
     
@@ -111,8 +120,17 @@ class ProfileHeaderView: UIView {
             setStatusButtom.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 20),
             setStatusButtom.heightAnchor.constraint(equalToConstant: 40),
             setStatusButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            
+            
+            
+            simpleButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            simpleButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            simpleButton.heightAnchor.constraint(equalToConstant: 40),
+            simpleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }
+
 
