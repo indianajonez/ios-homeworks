@@ -25,8 +25,10 @@ class FeedViewController: UIViewController {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.distribution = .fillProportionally
-        stack.spacing = 10
+        stack.distribution = .fillProportionally // fillProportionally
+        stack.spacing = 20.0
+        stack.alignment = .fill
+        
         return stack
     }()
     

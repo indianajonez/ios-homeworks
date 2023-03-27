@@ -81,6 +81,12 @@ class ProfileHeaderView: UIView {
         button.setTitle("Simple button", for: .normal)
         button.layer.backgroundColor = UIColor.blue.cgColor
         button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.addTarget(self, action: #selector(setStatus), for: .touchUpInside)
+        
         return button
     }()
     
@@ -121,9 +127,6 @@ class ProfileHeaderView: UIView {
             setStatusButtom.heightAnchor.constraint(equalToConstant: 40),
             setStatusButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
-            
-            
             
             simpleButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             simpleButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
