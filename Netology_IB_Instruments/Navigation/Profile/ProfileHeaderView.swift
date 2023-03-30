@@ -44,13 +44,13 @@ class ProfileHeaderView: UIView {
         textField.placeholder = "Write your status..."
         return textField
     }()
-
+    
     
     let statusLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Waiting for something..."
-        label.textColor = .gray
+        label.textColor = .systemGray
         //label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
@@ -75,9 +75,24 @@ class ProfileHeaderView: UIView {
         print(statusLabel.text ?? "NOT")
     }
     
+    private lazy var simpleButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Simple button", for: .normal)
+        button.layer.backgroundColor = UIColor.blue.cgColor
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.addTarget(self, action: #selector(setStatus), for: .touchUpInside)
+        
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom].forEach{addSubview($0)} // добавили аватарку на вью
+        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom, simpleButton].forEach{addSubview($0)} // добавили аватарку на вью
         layout() // закрепили аватарку на вью
     }
     
@@ -111,8 +126,14 @@ class ProfileHeaderView: UIView {
             setStatusButtom.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 20),
             setStatusButtom.heightAnchor.constraint(equalToConstant: 40),
             setStatusButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+            setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            simpleButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            simpleButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            simpleButton.heightAnchor.constraint(equalToConstant: 40),
+            simpleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }
+
 
