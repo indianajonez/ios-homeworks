@@ -9,22 +9,15 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // почему не добавляем fileprivate let data =  ?
-    // почему не используем private lazy var tableView: UITableView = {
-    // let tableView = UITableView.init(
-    // frame: .zero
-    // style: .plain
-    //)
-    //tableView.translatesAutoresizingMaskIntoConstraints = false
-    
-    // return tableView
-    // }()
+    private var listPost = Post.Make()
+    private var listPhoto = Photo.makeCollectionPhotos()
     
     private lazy var table: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
+        table.register(PhotosCollectionViewCell.self, forCellReuseIdentifier: PhotosCollectionViewCell.identifier)
         table.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier) //регистрация ячейки для переиспользования
         
         return table
@@ -80,6 +73,13 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosCollectionViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
+            //cell.selectionStyle = .none
+            return cell
+        }
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
         cell.setupCell(listPost[indexPath.row])
         //cell.selectionStyle = .none
