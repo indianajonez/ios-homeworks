@@ -13,11 +13,11 @@ class ProfileViewController: UIViewController {
     private var listPhoto = Photo.makeCollectionPhotos()
     
     private lazy var table: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
+        let table = UITableView(frame: .zero, style: .grouped) //поменять стиль
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
-        table.register(PhotosCollectionViewCell.self, forCellReuseIdentifier: PhotosCollectionViewCell.identifier)
+        table.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         table.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier) //регистрация ячейки для переиспользования
         
         return table
@@ -55,12 +55,24 @@ extension ProfileViewController: UITableViewDelegate {
         return section == 0 ? header : nil
         //nil
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return section == 0 ? 240 : 0
+        }
 }
 
 
-// MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить наблицу данными
+
+
+
+
+// MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить таблицу данными
 //tableView(_:titleForHeaderIn Section:)
 //tableView(_:titleForFooterIn Section:)
+
+
+//func tableView( tableView: UITableView, cellForRowAt indexPath: IndexPath) - нужно с этим разобраться
+//func tableView( tableView: UITableView, numberOfRowsInSection section: Int) -> Int - нужно с этим разобраться
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,27 +80,24 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? 0 : listPost.count // с помощью этого метода указываем кол-во ячеек
+        section == 0 ? 1 : listPost.count // с помощью этого метода указываем кол-во ячеек
         //listPost.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // здесь ошибка
         
         if indexPath.section == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosCollectionViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
+            //cell.selectionStyle = .none
+            return cell
+        } else {
+            
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
+            cell.setupCell(listPost[indexPath.row])
             //cell.selectionStyle = .none
             return cell
         }
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
-        cell.setupCell(listPost[indexPath.row])
-        //cell.selectionStyle = .none
-        return cell
     }
 }
 
-// MARK: - UIView
-
-extension UIView {
-    static var identifier: String {return String(describing: self)}
-}

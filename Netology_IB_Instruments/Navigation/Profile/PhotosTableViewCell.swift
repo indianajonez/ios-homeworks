@@ -11,7 +11,7 @@ class PhotosTableViewCell: UITableViewCell {
 
     private let collectionPhotos = Photo.makeCollectionPhotos()
     
-    private lazy var imageCollectionView: UIView = {
+    private lazy var imageCollectionView: UIView = { // вью самой коллекции на 4 картинки
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -36,19 +36,18 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var imageCollection: UICollectionView = { // коллекция картинок
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .horizontal // горизонтальное расположение
         
-        let imageCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let imageCollection = UICollectionView(
+        frame: .zero,
+        collectionViewLayout: layout
+        )
         imageCollection.translatesAutoresizingMaskIntoConstraints = false
         imageCollection.delegate = self // кто будет реагировать на делегиварование
         imageCollection.dataSource = self // хранилище дванных
         imageCollection.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.identifier)
         return imageCollection
     }()
-    
-    
-    
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) { // момент создания ячеки блока с фотографиями
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -84,7 +83,6 @@ class PhotosTableViewCell: UITableViewCell {
     }
     
 }
-
 
 // MARK: - UICOllectionViewDelegateFlowLayout
 
