@@ -62,7 +62,13 @@ extension ProfileViewController: UITableViewDelegate {
         return section == 0 ? header : nil
         //nil
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return section == 0 ? 240 : 0
+        }
 }
+
+
 
 
 // MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить наблицу данными
