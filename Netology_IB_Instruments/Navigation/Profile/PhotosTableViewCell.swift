@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol PhotosGalleryDelegate: AnyObject {
+    func openGallery()
+}
+
 class PhotosTableViewCell: UITableViewCell {
 
+    weak var delegate: PhotosGalleryDelegate?
+    
     private let collectionPhotos = Photo.makeCollectionPhotos()
     
     private lazy var imageCollectionView: UIView = { // вью самой коллекции на 4 картинки
@@ -30,9 +36,13 @@ class PhotosTableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "arrow"), for: .normal)
-        
+        button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         return button
     }()
+    
+    @objc private func tapButton() {
+        delegate?.openGallery()
+    }
     
     private lazy var imageCollection: UICollectionView = { // коллекция картинок
         let layout = UICollectionViewFlowLayout()
@@ -69,6 +79,7 @@ class PhotosTableViewCell: UITableViewCell {
             namelabel.bottomAnchor.constraint(equalTo: imageCollection.topAnchor, constant: -labelinset),
             
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -labelinset),
+            //button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: labelinset),
             button.centerYAnchor.constraint(equalTo: namelabel.centerYAnchor),
             button.heightAnchor.constraint(equalToConstant: 20),
             button.widthAnchor.constraint(equalToConstant: 20),
@@ -101,6 +112,7 @@ extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
+
 }
 
 

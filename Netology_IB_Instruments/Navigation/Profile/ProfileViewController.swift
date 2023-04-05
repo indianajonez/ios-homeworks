@@ -101,3 +101,11 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - PhotosGalleryDelegate
+extension ProfileViewController: PhotosGalleryDelegate {
+    func openGallery() {
+        let galleryVC = PhotosViewController()
+        //galleryVC.allPhotos = Photo.makeCollectionPhotos()
+        navigationController?.pushViewController(galleryVC, animated: true)
+    }
+}
