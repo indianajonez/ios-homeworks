@@ -35,7 +35,7 @@ class PhotosTableViewCell: UITableViewCell {
     private lazy var button: UIButton = { // кнопка для перехода в библиотеку картинок
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "arrow"), for: .normal)
+        button.setImage(UIImage(named: "Кнопка"), for: .normal) // .setTitle("Кнопка")
         button.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
         return button
     }()
