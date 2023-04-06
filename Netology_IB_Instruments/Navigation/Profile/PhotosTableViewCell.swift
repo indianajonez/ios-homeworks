@@ -41,7 +41,9 @@ class PhotosTableViewCell: UITableViewCell {
     }()
     
     @objc private func tapButton() {
+        print("TAP")
         delegate?.openGallery()
+        print(#function)
     }
     
     private lazy var imageCollection: UICollectionView = { // коллекция картинок

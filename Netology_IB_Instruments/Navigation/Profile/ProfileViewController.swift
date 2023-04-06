@@ -26,8 +26,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         layout()
-        
     }
     
     private func layout() {
@@ -60,11 +63,6 @@ extension ProfileViewController: UITableViewDelegate {
             return section == 0 ? 240 : 0
         }
 }
-
-
-
-
-
 
 // MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить таблицу данными
 //tableView(_:titleForHeaderIn Section:)
@@ -104,6 +102,7 @@ extension ProfileViewController: UITableViewDataSource {
 // MARK: - PhotosGalleryDelegate
 extension ProfileViewController: PhotosGalleryDelegate {
     func openGallery() {
+        print(#function)
         let galleryVC = PhotosViewController()
         //galleryVC.allPhotos = Photo.makeCollectionPhotos()
         navigationController?.pushViewController(galleryVC, animated: true)
