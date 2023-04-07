@@ -8,7 +8,7 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-
+    
     private let notificationCenter = NotificationCenter.default
     
     private lazy var scrollView: UIScrollView = {
@@ -20,7 +20,6 @@ class LogInViewController: UIViewController {
     private lazy var loginView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //view.backgroundColor = .green
         return view
     }()
     
@@ -30,20 +29,24 @@ class LogInViewController: UIViewController {
         return image
     }()
     
+    
     private lazy var loginText: UITextField = {
         let login = UITextField()
         login.translatesAutoresizingMaskIntoConstraints = false
+        login.textColor = .black //done
         login.layer.backgroundColor = UIColor.systemGray6.cgColor
+        //password.font = UIFont.systemFont(ofSize: 16, weight: .normal)
         login.layer.borderColor = UIColor.lightGray.cgColor
-        login.layer.borderWidth = 0.5
-        login.layer.cornerRadius = 10
+        login.layer.borderWidth = 0.5//done
+        login.layer.cornerRadius = 10//done
         login.leftViewMode = .always
-        login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        login.placeholder = "Email of phone"
+        login.placeholder = "Login" //done
+        login.autocapitalizationType = .none //done
+        login.isSecureTextEntry = true //done
+        login.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
         return login
     }()
     
-
     private lazy var loginPassword: UITextField = {
         let password = UITextField()
         password.translatesAutoresizingMaskIntoConstraints = false
@@ -55,13 +58,36 @@ class LogInViewController: UIViewController {
         password.layer.cornerRadius = 10//done
         password.leftViewMode = .always
         password.placeholder = "Password" //done
-        //password.tintColor = accentColor
         password.autocapitalizationType = .none //done
         password.isSecureTextEntry = true //done
         password.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
         return password
+
     }()
     
+    private lazy var emptyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = { [unowned self] in
+        let stackView = UIStackView()
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+        
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 0
+        
+        stackView.addArrangedSubview(self.loginText)
+        stackView.addArrangedSubview(self.emptyView)
+        stackView.addArrangedSubview(self.loginPassword)
+        
+        return stackView
+    }()
+ 
     private lazy var logInButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +109,6 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         layout()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,13 +139,13 @@ class LogInViewController: UIViewController {
     
     @objc private func kbdHide() {
         scrollView.contentOffset = .zero
-
+        
     }
     
     private func layout() {
         view.addSubview(scrollView)
         scrollView.addSubview(loginView)
-        [logoImage, loginText, loginPassword, loginText, logInButton].forEach{loginView.addSubview($0)}
+        [logoImage, stackView, logInButton].forEach{loginView.addSubview($0)} // удалила отсюда loginPassword, loginText,
         let constant: CGFloat = 16
         
         NSLayoutConstraint.activate([
@@ -141,20 +166,14 @@ class LogInViewController: UIViewController {
             logoImage.heightAnchor.constraint(equalToConstant: 100),
             logoImage.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
             
-            loginText.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
-            //loginText.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            loginText.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
-            loginText.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
-            loginText.heightAnchor.constraint(equalToConstant: 50),
             
-            loginPassword.topAnchor.constraint(equalTo: loginText.bottomAnchor, constant: 0),
-            //loginPassword.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            loginPassword.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
-            loginPassword.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
-            loginPassword.heightAnchor.constraint(equalToConstant: 50),
+            stackView.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120),
+            stackView.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
+            stackView.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
+            stackView.heightAnchor.constraint(equalToConstant: 100),
             
-            logInButton.topAnchor.constraint(equalTo: loginPassword.bottomAnchor, constant: constant),
-            //logInButton.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
+
+            logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: constant),
             logInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
             logInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
@@ -162,9 +181,7 @@ class LogInViewController: UIViewController {
         ])
         
     }
-
-
-
+    
 
 }
 
