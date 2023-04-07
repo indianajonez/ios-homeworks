@@ -20,7 +20,6 @@ class LogInViewController: UIViewController {
     private lazy var loginView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //view.backgroundColor = .green
         return view
     }()
     
@@ -30,38 +29,6 @@ class LogInViewController: UIViewController {
         return image
     }()
     
-    //    private lazy var loginText: UITextField = { // рабочий код НЕ УДАЛЯТЬ
-    //        let login = UITextField()
-    //        login.translatesAutoresizingMaskIntoConstraints = false
-    //        login.layer.backgroundColor = UIColor.systemGray6.cgColor
-    //        login.layer.borderColor = UIColor.lightGray.cgColor
-    //        login.layer.borderWidth = 0.5
-    //        login.layer.cornerRadius = 10
-    //        login.leftViewMode = .always
-    //        login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-    //        login.placeholder = "Email of phone"
-    //        return login
-    //    }()
-    //
-    
-    //    private lazy var loginPassword: UITextField = { // рабочий код НЕ УДАЛЯТЬ
-    //        let password = UITextField()
-    //        password.translatesAutoresizingMaskIntoConstraints = false
-    //        password.textColor = .black //done
-    //        password.layer.backgroundColor = UIColor.systemGray6.cgColor
-    //        //password.font = UIFont.systemFont(ofSize: 16, weight: .normal)
-    //        password.layer.borderColor = UIColor.lightGray.cgColor
-    //        password.layer.borderWidth = 0.5//done
-    //        password.layer.cornerRadius = 10//done
-    //        password.leftViewMode = .always
-    //        password.placeholder = "Password" //done
-    //        //password.tintColor = accentColor
-    //        password.autocapitalizationType = .none //done
-    //        password.isSecureTextEntry = true //done
-    //        password.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
-    //        return password
-    //    }()
-    // MARK: Создаем StackView для текстфилдов
     
     private lazy var loginText: UITextField = {
         let login = UITextField()
@@ -91,7 +58,6 @@ class LogInViewController: UIViewController {
         password.layer.cornerRadius = 10//done
         password.leftViewMode = .always
         password.placeholder = "Password" //done
-        //password.tintColor = accentColor
         password.autocapitalizationType = .none //done
         password.isSecureTextEntry = true //done
         password.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
@@ -143,7 +109,6 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         layout()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -207,20 +172,8 @@ class LogInViewController: UIViewController {
             stackView.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
             stackView.heightAnchor.constraint(equalToConstant: 100),
             
-            //            loginText.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 120), // НЕ СТИРАТЬ РАБОЧИЙ КОД
-            //            //loginText.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            //            loginText.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
-            //            loginText.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
-            //            loginText.heightAnchor.constraint(equalToConstant: 50),
-            //
-            //            loginPassword.topAnchor.constraint(equalTo: loginText.bottomAnchor, constant: 0),
-            //            //loginPassword.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            //            loginPassword.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
-            //            loginPassword.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
-            //            loginPassword.heightAnchor.constraint(equalToConstant: 50),
-            //
+
             logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: constant),
-            //logInButton.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
             logInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
             logInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
