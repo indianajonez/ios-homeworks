@@ -13,13 +13,12 @@ class ProfileViewController: UIViewController {
     private var listPhoto = Photo.makeCollectionPhotos()
     
     private lazy var table: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped) //поменять стиль
+        let table = UITableView(frame: .zero, style: .plain) //поменять стиль
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
         table.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         table.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier) //регистрация ячейки для переиспользования
-        
         return table
     }()
     
@@ -31,6 +30,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         layout()
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func layout() {
@@ -60,17 +60,12 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return section == 0 ? 240 : 0
+            return section == 0 ? 220 : 0
         }
 }
 
 // MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить таблицу данными
-//tableView(_:titleForHeaderIn Section:)
-//tableView(_:titleForFooterIn Section:)
 
-
-//func tableView( tableView: UITableView, cellForRowAt indexPath: IndexPath) - нужно с этим разобраться
-//func tableView( tableView: UITableView, numberOfRowsInSection section: Int) -> Int - нужно с этим разобраться
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,7 +74,6 @@ extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         section == 0 ? 1 : listPost.count // с помощью этого метода указываем кол-во ячеек
-        //listPost.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // здесь ошибка
