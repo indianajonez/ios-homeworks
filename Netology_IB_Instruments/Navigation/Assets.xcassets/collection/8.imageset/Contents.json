@@ -1,11 +1,7 @@
 {
   "images" : [
     {
-<<<<<<<< HEAD:Netology_IB_Instruments/Navigation/Assets.xcassets/collection/8.imageset/Contents.json
       "filename" : "8.jpg",
-========
-      "filename" : "Лохматый.png",
->>>>>>>> feature/iosui-7:Netology_IB_Instruments/Navigation/Assets.xcassets/Лохматый.imageset/Contents.json
       "idiom" : "universal",
       "scale" : "1x"
     },
