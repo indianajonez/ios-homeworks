@@ -85,11 +85,21 @@ extension ProfileViewController: UITableViewDataSource {
         //listPost.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
-        cell.setupCell(listPost[indexPath.row])
-        //cell.selectionStyle = .none
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // здесь ошибка
+        
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
+            cell.delegate = self 
+            //cell.selectionStyle = .none
+            return cell
+        } else {
+            
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
+            cell.setupCell(listPost[indexPath.row])
+            //cell.selectionStyle = .none
+            return cell
+        }
     }
 }
 
