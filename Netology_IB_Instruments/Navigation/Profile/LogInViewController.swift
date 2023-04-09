@@ -29,7 +29,6 @@ class LogInViewController: UIViewController {
         return image
     }()
     
-    
     private lazy var loginText: UITextField = {
         let login = UITextField()
         login.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +37,7 @@ class LogInViewController: UIViewController {
         //password.font = UIFont.systemFont(ofSize: 16, weight: .normal)
         login.layer.borderColor = UIColor.lightGray.cgColor
         login.layer.borderWidth = 0.5//done
-        login.layer.cornerRadius = 10//done
+        //login.layer.cornerRadius = 10//done
         login.leftViewMode = .always
         login.placeholder = "Login" //done
         login.autocapitalizationType = .none //done
@@ -55,7 +54,7 @@ class LogInViewController: UIViewController {
         //password.font = UIFont.systemFont(ofSize: 16, weight: .normal)
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.borderWidth = 0.5//done
-        password.layer.cornerRadius = 10//done
+        //password.layer.cornerRadius = 10//done
         password.leftViewMode = .always
         password.placeholder = "Password" //done
         password.autocapitalizationType = .none //done
@@ -80,6 +79,9 @@ class LogInViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = 0
+        stackView.layer.cornerRadius = 10
+        //stackView.layer.borderWidth = 0.5
+        
         
         stackView.addArrangedSubview(self.loginText)
         stackView.addArrangedSubview(self.emptyView)
@@ -171,8 +173,8 @@ class LogInViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
             stackView.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
             stackView.heightAnchor.constraint(equalToConstant: 100),
-            
 
+            
             logInButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: constant),
             logInButton.leadingAnchor.constraint(equalTo: loginView.leadingAnchor, constant: constant),
             logInButton.trailingAnchor.constraint(equalTo: loginView.trailingAnchor, constant: -constant),
@@ -184,5 +186,4 @@ class LogInViewController: UIViewController {
     
 
 }
-
 
