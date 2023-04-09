@@ -16,6 +16,7 @@ class FeedViewController: UIViewController {
         text: "текст внутри данного поста, очень длинный и важный"
     )
     
+
     let postTwo = Post2(
         title: "Second Post",
         image: UIImage(named: "A316DE42"),
