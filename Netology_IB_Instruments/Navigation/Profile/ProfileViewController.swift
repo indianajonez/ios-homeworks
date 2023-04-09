@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var listPost = Post.Make()
+    private var listPost = Post.make()
     private var listPhoto = Photo.makeCollectionPhotos()
     
     private lazy var table: UITableView = {
@@ -81,6 +81,7 @@ extension ProfileViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
             //cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         } else {
             
