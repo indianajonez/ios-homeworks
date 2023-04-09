@@ -19,7 +19,9 @@
 		F367D60729C395D9009A07B8 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F367D60629C395D9009A07B8 /* PostViewController.swift */; };
 		F36F5B0F29C788E3002AA1D0 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F5B0E29C788E3002AA1D0 /* ProfileHeaderView.swift */; };
 		F36F5B1229CA0DE4002AA1D0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36F5B1129CA0DE4002AA1D0 /* Post.swift */; };
+
 		F3D500A829D1A77400CCABF5 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3D500A729D1A77400CCABF5 /* LogInViewController.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,7 @@
 		F367D60629C395D9009A07B8 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		F36F5B0E29C788E3002AA1D0 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		F36F5B1129CA0DE4002AA1D0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+
 		F3D500A729D1A77400CCABF5 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,8 +93,10 @@
 			children = (
 				F367D60029C3859A009A07B8 /* ProfileViewController.swift */,
 				F36F5B0E29C788E3002AA1D0 /* ProfileHeaderView.swift */,
+
 				F3D500A729D1A77400CCABF5 /* LogInViewController.swift */,
 				F31191BE29D8ACAC00EEC6DF /* PostTableViewCell.swift */,
+
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				F36F5B1229CA0DE4002AA1D0 /* Post.swift in Sources */,
 				F367D5ED29C057AD009A07B8 /* SceneDelegate.swift in Sources */,
 				F3D500A829D1A77400CCABF5 /* LogInViewController.swift in Sources */,
+
 				F36F5B0F29C788E3002AA1D0 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
