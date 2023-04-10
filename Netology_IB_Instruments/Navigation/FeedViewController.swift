@@ -10,13 +10,14 @@ import Foundation
 
 class FeedViewController: UIViewController {
 
-    let post = Post(
+    let post = Post2(
         title: "Название поста",
         image: UIImage(named: "A316DE42"),
         text: "текст внутри данного поста, очень длинный и важный"
     )
     
-    let postTwo = Post(
+
+    let postTwo = Post2(
         title: "Second Post",
         image: UIImage(named: "A316DE42"),
         text: "Text for second post")
@@ -78,3 +79,4 @@ class FeedViewController: UIViewController {
     }
 
 }
+
