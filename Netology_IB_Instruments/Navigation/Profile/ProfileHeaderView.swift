@@ -14,14 +14,14 @@ class ProfileHeaderView: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 50
         image.layer.borderWidth = 3
-        image.layer.borderColor = UIColor.white.cgColor // Создали аватарку
+        image.layer.borderColor = UIColor.white.cgColor
         image.clipsToBounds = true
         return image
     }()
     
     let fullNameLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false // обязательно false если используешь констрейнты
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Hipster Cat"
         label.textColor = .black
         label.textAlignment = .center
@@ -75,24 +75,9 @@ class ProfileHeaderView: UIView {
         print(statusLabel.text ?? "NOT")
     }
     
-    private lazy var simpleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Simple button", for: .normal)
-        button.layer.backgroundColor = UIColor.blue.cgColor
-        button.layer.cornerRadius = 4
-        button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
-        button.layer.shadowOpacity = 0.7
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.addTarget(self, action: #selector(setStatus), for: .touchUpInside)
-        
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom, simpleButton].forEach{addSubview($0)} // добавили аватарку на вью
+        [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom, ].forEach{addSubview($0)} // добавили аватарку на вью
         layout() // закрепили аватарку на вью
     }
     
@@ -111,12 +96,12 @@ class ProfileHeaderView: UIView {
             fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor),
             fullNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//            fullNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+
             
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 20),
             statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            //statusLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+
             
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 20),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
@@ -128,10 +113,6 @@ class ProfileHeaderView: UIView {
             setStatusButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            simpleButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            simpleButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            simpleButton.heightAnchor.constraint(equalToConstant: 40),
-            simpleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
     }
 }

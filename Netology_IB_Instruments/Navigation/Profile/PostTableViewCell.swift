@@ -90,7 +90,6 @@ class PostTableViewCell: UITableViewCell {
             postNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: labelInset),
             postNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: labelInset),
             postNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -labelInset),
-            //postNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
             
             postImage.topAnchor.constraint(equalTo: postNameLabel.bottomAnchor, constant: imageInset),
             postImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
@@ -121,9 +120,3 @@ class PostTableViewCell: UITableViewCell {
     }
 }
 
-//override var intrisicContentSize: CGSize { тогда можно указывать меньше констрейнтов только по оси Х и У
-//CGSize(
-//wight: UIView.noIntrinsicMetric,
-//heihth: 60.0
-//)
-//}

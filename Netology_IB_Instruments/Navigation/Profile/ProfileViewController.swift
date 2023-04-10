@@ -9,16 +9,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // почему не добавляем fileprivate let data =  ?
-    // почему не используем private lazy var tableView: UITableView = {
-    // let tableView = UITableView.init(
-    // frame: .zero
-    // style: .plain
-    //)
-    //tableView.translatesAutoresizingMaskIntoConstraints = false
-    
-    // return tableView
-    // }()
     
     private lazy var table: UITableView = {
         let table = UITableView(frame: .zero, style: .plain)
@@ -51,6 +41,7 @@ class ProfileViewController: UIViewController {
 }
 
 // MARK: - UITableViewDelegate
+
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
@@ -60,7 +51,6 @@ extension ProfileViewController: UITableViewDelegate {
         let header = ProfileHeaderView()
         header.backgroundColor = .darkGray
         return section == 0 ? header : nil
-        //nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -72,8 +62,7 @@ extension ProfileViewController: UITableViewDelegate {
 
 
 // MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить наблицу данными
-//tableView(_:titleForHeaderIn Section:)
-//tableView(_:titleForFooterIn Section:)
+
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,13 +71,12 @@ extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         section == 0 ? 0 : listPost.count // с помощью этого метода указываем кол-во ячеек
-        //listPost.count
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
         cell.setupCell(listPost[indexPath.row])
-        //cell.selectionStyle = .none
         return cell
     }
 }
