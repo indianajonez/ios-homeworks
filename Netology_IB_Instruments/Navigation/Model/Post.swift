@@ -22,7 +22,7 @@ struct Post2 {
     let text: String?
 }
 
-extension Post {
+extension Post2 {
     static func make() -> [Post] {
         return [
             Post(author: "Лохматый", description: "Сегодня еще ничего не елдлапрои мывлмтывжл рмфжвмо фжщимофж шмрофущш комфщшумрфшзгкеи рфшкгеримфшыкгеирыал опирш жагиргшыкер", image: "Лохматый", likes: 10, views: 320),

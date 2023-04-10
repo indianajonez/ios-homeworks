@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var listPost = Post.make()
+    private var listPost = Post2.make()
     private var listPhoto = Photo.makeCollectionPhotos()
     
     private lazy var table: UITableView = {
