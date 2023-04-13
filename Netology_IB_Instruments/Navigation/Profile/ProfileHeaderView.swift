@@ -179,19 +179,19 @@ class ProfileHeaderView: UIView {
             avatarWight,
             avatarHeight,
             
-            fullNameLabel.topAnchor.constraint(equalTo: avatarImage.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
+            fullNameLabel.leadingAnchor.constraint(equalTo: trailingAnchor, constant: -240),
             fullNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            //            fullNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            fullNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 16),
-            statusLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 20),
+            statusLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -250),
             statusLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             //statusLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 20),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            statusTextField.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor),
+            statusTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -270),
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
             setStatusButtom.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 20),
