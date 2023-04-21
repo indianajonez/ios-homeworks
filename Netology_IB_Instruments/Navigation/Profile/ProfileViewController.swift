@@ -9,22 +9,30 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+
+    private var listPost = Post2.make()
+    private var listPhoto = Photo.makeCollectionPhotos()
+
     
     private lazy var table: UITableView = {
-        let table = UITableView(frame: .zero, style: .plain)
+        let table = UITableView(frame: .zero, style: .plain) //поменять стиль
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
+        table.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.identifier)
         table.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier) //регистрация ячейки для переиспользования
-        
         return table
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         layout()
-        
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func layout() {
@@ -54,14 +62,11 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return section == 0 ? 240 : 0
+            return section == 0 ? 220 : 0
         }
 }
 
-
-
-
-// MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить наблицу данными
+// MARK: - UITableViewDataSource дата сорс отвечает за то, чтобы наполнить таблицу данными
 
 extension ProfileViewController: UITableViewDataSource {
     
@@ -70,19 +75,34 @@ extension ProfileViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        section == 0 ? 0 : listPost.count // с помощью этого метода указываем кол-во ячеек
-        
+        section == 0 ? 1 : listPost.count // с помощью этого метода указываем кол-во ячеек
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
-        cell.setupCell(listPost[indexPath.row])
-        return cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { // здесь ошибка
+        
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifier) as? PhotosTableViewCell else { return UITableViewCell()}
+            //cell.selectionStyle = .none
+            cell.delegate = self
+            return cell
+        } else {
+            
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier) as? PostTableViewCell else { return UITableViewCell()}
+            cell.setupCell(listPost[indexPath.row])
+            //cell.selectionStyle = .none
+            return cell
+        }
+
     }
 }
 
-// MARK: - UIView
-
-extension UIView {
-    static var identifier: String {return String(describing: self)}
+// MARK: - PhotosGalleryDelegate
+extension ProfileViewController: PhotosGalleryDelegate {
+    func openGallery() {
+        print(#function)
+        let galleryVC = PhotosViewController()
+        //galleryVC.allPhotos = Photo.makeCollectionPhotos()
+        navigationController?.pushViewController(galleryVC, animated: true)
+    }
 }

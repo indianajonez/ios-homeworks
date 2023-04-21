@@ -3,7 +3,6 @@
 //  Navigation
 //
 //  Created by Ekaterina Saveleva on 16.03.2023.
-//
 
 import UIKit
 

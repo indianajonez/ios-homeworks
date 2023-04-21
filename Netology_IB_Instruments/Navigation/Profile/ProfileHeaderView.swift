@@ -44,13 +44,13 @@ class ProfileHeaderView: UIView {
         textField.placeholder = "Write your status..."
         return textField
     }()
-    
+
     
     let statusLabel : UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Waiting for something..."
-        label.textColor = .systemGray
+        label.textColor = .gray
         //label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         return label
@@ -77,6 +77,7 @@ class ProfileHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
         [avatarImage, fullNameLabel, statusLabel, statusTextField, setStatusButtom, ].forEach{addSubview($0)} // добавили аватарку на вью
         layout() // закрепили аватарку на вью
     }
@@ -112,9 +113,8 @@ class ProfileHeaderView: UIView {
             setStatusButtom.heightAnchor.constraint(equalToConstant: 40),
             setStatusButtom.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             setStatusButtom.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
+
         ])
     }
 }
-
 
