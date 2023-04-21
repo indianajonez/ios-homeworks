@@ -32,16 +32,16 @@ class LogInViewController: UIViewController {
     private lazy var loginText: UITextField = {
         let login = UITextField()
         login.translatesAutoresizingMaskIntoConstraints = false
-        login.textColor = .black //done
+        login.textColor = .black
         login.layer.backgroundColor = UIColor.systemGray6.cgColor
         //password.font = UIFont.systemFont(ofSize: 16, weight: .normal)
         login.layer.borderColor = UIColor.lightGray.cgColor
-        login.layer.borderWidth = 0.5//done
-        //login.layer.cornerRadius = 10//done
+        login.layer.borderWidth = 0.5
+        //login.layer.cornerRadius = 10
         login.leftViewMode = .always
-        login.placeholder = "Login" //done
-        login.autocapitalizationType = .none //done
-        login.isSecureTextEntry = true //done
+        login.placeholder = "Login"
+        login.autocapitalizationType = .none
+        login.isSecureTextEntry = true
         login.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 10))
         return login
     }()
