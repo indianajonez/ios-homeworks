@@ -9,8 +9,10 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private var listPost = Post.make()
+
+    private var listPost = Post2.make()
     private var listPhoto = Photo.makeCollectionPhotos()
+
     
     private lazy var table: UITableView = {
         let table = UITableView(frame: .zero, style: .plain) //поменять стиль
@@ -57,7 +59,6 @@ extension ProfileViewController: UITableViewDelegate {
         let header = ProfileHeaderView()
         header.backgroundColor = .darkGray
         return section == 0 ? header : nil
-        //nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,6 +93,7 @@ extension ProfileViewController: UITableViewDataSource {
             //cell.selectionStyle = .none
             return cell
         }
+
     }
 }
 
