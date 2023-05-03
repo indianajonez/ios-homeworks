@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Post {  // комментарий от Алексея Павлова "Подобные структуры struct Post лучше убирать в отдельный файл"
+struct Post { 
     let id = UUID()
     let author: String
     let description: String
